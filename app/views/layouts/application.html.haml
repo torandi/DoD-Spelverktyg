@@ -1,0 +1,36 @@
+!!! 
+%html{:lang=>'sv'}
+  %head>
+    %title= "Drakar och Demoner - Spelverktyg"
+    %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
+    %meta{:name=>"author", :href=>"http://#{request.host}/humans.txt"}
+
+    = stylesheet_link_tag 'screen'
+    /[if lt IE 9]
+      = javascript_include_tag 'http://html5shiv.googlecode.com/svn/trunk/html5.js'
+    = javascript_include_tag "jquery/jquery.min.js"
+
+    = yield(:head)
+
+    = csrf_meta_tag
+  %body
+    #main
+      #top
+        #menu
+          = render_navigation
+      #page
+        .body
+          .content
+            - if flash[:notice]
+              %div.notice
+                = flash[:notice]
+            - if flash[:error]
+              %div.error
+                = flash[:error]
+            - if content_for?(:main_content)
+              = yield(:main_content)
+            - else
+              = yield
+        .clear
+        .footer
+          Sidan skapad av Andreas Tarandi
