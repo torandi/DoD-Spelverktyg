@@ -1,0 +1,4 @@
+%h2 Användare
+%ul
+  - @users.each do |u|
+    %li= link_to u.login, edit_user_path(u)
