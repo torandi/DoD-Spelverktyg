@@ -2,5 +2,6 @@
   = f.input :login
   = f.input :password
   = f.input :password_confirmation
+    = f.input :role, :collection=>["user", "admin"], :include_blank =>false
   = f.submit
     

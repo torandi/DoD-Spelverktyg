@@ -12,6 +12,7 @@ gem 'sass'
 gem 'inherited_resources'
 gem 'simple-navigation'
 gem 'simple_form'
+gem 'cancan'
 
 # Use unicorn as the web server
 # gem 'unicorn'
