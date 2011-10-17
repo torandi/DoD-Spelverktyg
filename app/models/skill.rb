@@ -18,4 +18,30 @@ class Skill < ActiveRecord::Base
     f = formula.gsub(/x/,"#{x}")
     lambda { |f| $SAFE=4;  return eval(f).to_int }.call(formula)
   end
+
+  def required_skill_level
+    case level
+      when 1
+        4
+      when 2, 3
+        7
+      when 4, 5
+        10
+    end
+  end
+
+  def cost 
+    case level
+      when 1
+        4
+      when 2
+        7
+      when 3
+        10
+      when 4
+        14
+      when 5
+        20
+    end
+  end
 end

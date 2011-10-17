@@ -10,4 +10,8 @@ class SkillTree < ActiveRecord::Base
   def safe_name
     name.gsub(/ /,"_").gsub(/[åä]/,"a").gsub(/ö/,"o").downcase
   end
+
+  def to_s
+    name
+  end
 end

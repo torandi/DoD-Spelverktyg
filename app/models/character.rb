@@ -21,6 +21,10 @@ class Character < ActiveRecord::Base
   def to_s
     name
   end
+  
+  def has_skill?(skill)
+    skills.find_by_skill_id(skill.id)
+  end
 
   private
   def create_skills
