@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @spell_tree.name
+%p
+  %b Hvita effect:
+  = @spell_tree.hvita_effect
+%p
+  %b Vaagri effect:
+  = @spell_tree.vaagri_effect
+%p
+  %b Mork effect:
+  = @spell_tree.mork_effect
+
+= link_to 'Edit', edit_spell_tree_path(@spell_tree)
+\|
+= link_to 'Back', spell_trees_path

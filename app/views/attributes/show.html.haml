@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @attribute.name
+%p
+  %b Text:
+  = @attribute.text_id
+%p
+  %b Base formula:
+  = @attribute.base_formula
+%p
+  %b Type:
+  = @attribute.type
+
+= link_to 'Edit', edit_attribute_path(@attribute)
+\|
+= link_to 'Back', attributes_path

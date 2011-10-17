@@ -1,0 +1,22 @@
+= form_for @spell_tree do |f|
+  -if @spell_tree.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@spell_tree.errors.count, "error")} prohibited this spell_tree from being saved:"
+      %ul
+        - @spell_tree.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :hvita_effect
+    = f.text_field :hvita_effect
+  .field
+    = f.label :vaagri_effect
+    = f.text_field :vaagri_effect
+  .field
+    = f.label :mork_effect
+    = f.text_field :mork_effect
+  .actions
+    = f.submit 'Save'

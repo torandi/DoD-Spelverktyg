@@ -1,0 +1,29 @@
+%h1 Listing skills
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Skill tree
+    %th Level
+    %th Attribute
+    %th Formula
+    %th
+    %th
+    %th
+
+  - @skills.each do |skill|
+    %tr
+      %td= skill.name
+      %td= skill.description
+      %td= skill.skill_tree_id
+      %td= skill.level
+      %td= skill.attribute
+      %td= skill.formula
+      %td= link_to 'Show', skill
+      %td= link_to 'Edit', edit_skill_path(skill)
+      %td= link_to 'Destroy', skill, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Skill', new_skill_path

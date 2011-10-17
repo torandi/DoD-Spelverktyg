@@ -1,0 +1,18 @@
+= simple_form_for @skill do |f|
+  -if @skill.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@skill.errors.count, "error")} prohibited this skill from being saved:"
+      %ul
+        - @skill.errors.full_messages.each do |msg|
+          %li= msg
+
+  .fields
+    = f.input :name, :label=>"Namn"
+    = f.input :description, :label=>"Beskrivning"
+    = f.association :skill_tree, :label=>"Färdighetsträd"
+    = f.input :level, :label=>"Nivå", :collection=>(1..5), :include_blank=>false
+    = f.association :attribute, :label=>"Attribut"
+    = f.input :formula, :label=>"Formel"
+    = f.input :class_limited, :label=>"Begränsad till en i en klass (ex. en vitnertavla)"
+  .actions
+    = f.submit 'Spara'

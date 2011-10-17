@@ -21,6 +21,14 @@
       #page
         .body
           .content
+            #user_nav
+              - if current_user
+                = link_to "Profil", user_path(current_user)
+                |
+                = link_to "Logga ut", logout_path
+              - else
+                = link_to "Logga in", login_path
+
             - if flash[:notice]
               %div.notice
                 = flash[:notice]

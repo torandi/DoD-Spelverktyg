@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @skill_tree.name
+%p
+  %b Skill model:
+  = @skill_tree.skill_model
+
+= link_to 'Edit', edit_skill_tree_path(@skill_tree)
+\|
+= link_to 'Back', skill_trees_path

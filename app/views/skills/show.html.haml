@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @skill.name
+%p
+  %b Description:
+  = @skill.description
+%p
+  %b Skill tree:
+  = @skill.skill_tree_id
+%p
+  %b Level:
+  = @skill.level
+%p
+  %b Attribute:
+  = @skill.attribute
+%p
+  %b Formula:
+  = @skill.formula
+
+= link_to 'Edit', edit_skill_path(@skill)
+\|
+= link_to 'Back', skills_path

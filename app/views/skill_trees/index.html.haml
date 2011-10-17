@@ -1,0 +1,21 @@
+%h1 Listing skill_trees
+
+%table
+  %tr
+    %th Name
+    %th Skill model
+    %th
+    %th
+    %th
+
+  - @skill_trees.each do |skill_tree|
+    %tr
+      %td= skill_tree.name
+      %td= skill_tree.skill_model
+      %td= link_to 'Show', skill_tree
+      %td= link_to 'Edit', edit_skill_tree_path(skill_tree)
+      %td= link_to 'Destroy', skill_tree, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Skill tree', new_skill_tree_path

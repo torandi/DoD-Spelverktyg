@@ -1,0 +1,25 @@
+%h1 Listing spell_trees
+
+%table
+  %tr
+    %th Name
+    %th Hvita effect
+    %th Vaagri effect
+    %th Mork effect
+    %th
+    %th
+    %th
+
+  - @spell_trees.each do |spell_tree|
+    %tr
+      %td= spell_tree.name
+      %td= spell_tree.hvita_effect
+      %td= spell_tree.vaagri_effect
+      %td= spell_tree.mork_effect
+      %td= link_to 'Show', spell_tree
+      %td= link_to 'Edit', edit_spell_tree_path(spell_tree)
+      %td= link_to 'Destroy', spell_tree, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Spell tree', new_spell_tree_path

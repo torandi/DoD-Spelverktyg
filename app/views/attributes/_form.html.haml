@@ -1,0 +1,22 @@
+= form_for @attribute do |f|
+  -if @attribute.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@attribute.errors.count, "error")} prohibited this attribute from being saved:"
+      %ul
+        - @attribute.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :text_id
+    = f.text_field :text_id
+  .field
+    = f.label :base_formula
+    = f.text_field :base_formula
+  .field
+    = f.label :type
+    = f.text_field :type
+  .actions
+    = f.submit 'Save'
