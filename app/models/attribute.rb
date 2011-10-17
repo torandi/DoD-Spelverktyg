@@ -7,17 +7,18 @@ class Attribute < ActiveRecord::Base
 
   # Limitation är aktiv vitnertavla, vapen eller dyl
   # Base är om man ska utgå från annat värde än den beräknade basen (anget i attributet)
-  def value(character,limitation=nil, base=nil)
+  # Calc path fylls i med vägen som togs för uträkningen (reference)
+  def value(character,calc_path = [], limitation=nil, base=nil)
     if output_type == 0
-      calc_value(limitation)
+      calc_value(limitation,calc_value, limitation, base)
     else
       #Type 1, tarning
       #TODO
-      calc_value(limitation)
+      calc_value(limitation,calc_value, limitation, base)
     end 
   end
 
-  def calc_value(character,limitation=nil, base=nil)
+  def calc_value(character,calc_path = [], limitation=nil, base=nil)
     #TODO
   end
 

@@ -15,7 +15,15 @@
   = @character.party
 
 
-%h3 Fördjupningar:
+%h3= link_to "Fördjupningar:", skills_path
 
 - @character.skill_levels.each do |slevel|
   %h4 #{slevel.skill_tree.name} (FV #{slevel.level})
+  -(1..5).each do |level|
+    - skills = @character.skills.level(level).skill_tree(slevel.skill_tree_id)
+    - unless skills.empty?
+      %h5 Nivå #{level}
+      %ul
+        - skills.each do |skill|
+          %li= skill
+

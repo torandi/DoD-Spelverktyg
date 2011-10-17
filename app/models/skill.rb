@@ -4,6 +4,7 @@ class Skill < ActiveRecord::Base
   belongs_to :dependency, :class_name=>"Skill"
 
   scope :level , lambda { |level| where("level = ?", level) }
+  scope :skill_tree , lambda { |tree| where("skill_tree_id = ?", tree) }
 
   def to_s
     name

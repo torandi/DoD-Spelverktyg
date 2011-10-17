@@ -21,3 +21,11 @@
 = link_to 'Edit', edit_skill_path(@skill)
 \|
 = link_to 'Back', skills_path
+
+%h4 Ge färdighet till karaktär
+= simple_form_for CharacterSkill.new do |f|
+  = f.association :character, :include_blank=>false
+  = f.input :skill_id, :as=>:hidden, :input_html=>{:value=>@skill.id}
+  -#TODO: Fixa specifikationer
+  = f.submit "Lägg till"
+
