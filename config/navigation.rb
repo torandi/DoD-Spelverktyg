@@ -8,6 +8,8 @@ SimpleNavigation::Configuration.run do |navigation|
     end
     primary.item :spell_trees, "Vitnertavlor", spell_trees_path do |sub_nav|
     end
+    primary.item :attributes, "Attribut", attributes_path do |sub_nav|
+    end
   end
 
 end

@@ -10,6 +10,7 @@
     = f.input :name, :label=>"Namn"
     = f.input :description, :label=>"Beskrivning"
     = f.association :skill_tree, :label=>"Färdighetsträd"
+    = f.association :dependency , :label=>"Förkrav"
     = f.input :level, :label=>"Nivå", :collection=>(1..5), :include_blank=>false
     = f.association :attribute, :label=>"Attribut"
     = f.input :formula, :label=>"Formel"

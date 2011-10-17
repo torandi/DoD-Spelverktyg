@@ -10,13 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017182730) do
+ActiveRecord::Schema.define(:version => 20111017203941) do
 
   create_table "attributes", :force => true do |t|
     t.string   "name"
     t.string   "text_id",                     :null => false
     t.string   "base_formula",                :null => false
-    t.integer  "type",         :default => 0, :null => false
+    t.integer  "output_type",  :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
