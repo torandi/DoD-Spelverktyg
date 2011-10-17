@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Character:
+  = @character_skill_level.character_id
+%p
+  %b Skill tree:
+  = @character_skill_level.skill_tree_id
+%p
+  %b Level:
+  = @character_skill_level.level
+
+= link_to 'Edit', edit_character_skill_level_path(@character_skill_level)
+\|
+= link_to 'Back', character_skill_levels_path

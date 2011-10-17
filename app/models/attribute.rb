@@ -6,7 +6,8 @@ class Attribute < ActiveRecord::Base
 
 
   # Limitation är aktiv vitnertavla, vapen eller dyl
-  def value(limitation=nil)
+  # Base är om man ska utgå från annat värde än den beräknade basen (anget i attributet)
+  def value(character,limitation=nil, base=nil)
     if output_type == 0
       calc_value(limitation)
     else
@@ -16,12 +17,19 @@ class Attribute < ActiveRecord::Base
     end 
   end
 
-  def calc_value(limitation=nil)
+  def calc_value(character,limitation=nil, base=nil)
     #TODO
   end
 
   def to_s
     name
+  end
+
+  def base_value(character)
+    formula = base_formula.gsub(/\{(.+?)\}/) do |m|
+      character.skill_level($1)
+    end
+    lambda { |f| $SAFE=4;  return eval(f).to_int }.call(formula)
   end
 
   private

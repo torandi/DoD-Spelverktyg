@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017203941) do
+ActiveRecord::Schema.define(:version => 20111017214001) do
 
   create_table "attributes", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,37 @@ ActiveRecord::Schema.define(:version => 20111017203941) do
   end
 
   add_index "attributes", ["text_id"], :name => "index_attributes_on_text_id", :unique => true
+
+  create_table "character_skill_levels", :force => true do |t|
+    t.integer  "character_id"
+    t.integer  "skill_tree_id"
+    t.integer  "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "character_skills", :force => true do |t|
+    t.integer  "character_id"
+    t.integer  "skill_id"
+    t.integer  "specialization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "characters", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "party_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parties", :force => true do |t|
+    t.string   "name"
+    t.integer  "gameleader_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "skill_trees", :force => true do |t|
     t.string   "name"

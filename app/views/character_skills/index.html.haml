@@ -1,0 +1,23 @@
+%h1 Listing character_skills
+
+%table
+  %tr
+    %th Character
+    %th Skill
+    %th Specialization
+    %th
+    %th
+    %th
+
+  - @character_skills.each do |character_skill|
+    %tr
+      %td= character_skill.character_id
+      %td= character_skill.skill_id
+      %td= character_skill.specialization_id
+      %td= link_to 'Show', character_skill
+      %td= link_to 'Edit', edit_character_skill_path(character_skill)
+      %td= link_to 'Destroy', character_skill, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Character skill', new_character_skill_path

@@ -1,0 +1,23 @@
+%h1 Listing character_skill_levels
+
+%table
+  %tr
+    %th Character
+    %th Skill tree
+    %th Level
+    %th
+    %th
+    %th
+
+  - @character_skill_levels.each do |character_skill_level|
+    %tr
+      %td= character_skill_level.character_id
+      %td= character_skill_level.skill_tree_id
+      %td= character_skill_level.level
+      %td= link_to 'Show', character_skill_level
+      %td= link_to 'Edit', edit_character_skill_level_path(character_skill_level)
+      %td= link_to 'Destroy', character_skill_level, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Character skill level', new_character_skill_level_path

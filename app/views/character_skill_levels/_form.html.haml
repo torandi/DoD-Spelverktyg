@@ -1,0 +1,19 @@
+= form_for @character_skill_level do |f|
+  -if @character_skill_level.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@character_skill_level.errors.count, "error")} prohibited this character_skill_level from being saved:"
+      %ul
+        - @character_skill_level.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :character_id
+    = f.text_field :character_id
+  .field
+    = f.label :skill_tree_id
+    = f.text_field :skill_tree_id
+  .field
+    = f.label :level
+    = f.text_field :level
+  .actions
+    = f.submit 'Save'

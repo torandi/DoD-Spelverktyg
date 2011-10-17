@@ -1,5 +1,13 @@
 Dododr::Application.routes.draw do
 
+  resources :character_skills
+
+  resources :character_skill_levels
+
+  resources :parties
+
+  resources :characters
+
   resources :spell_trees
 
   resources :attributes

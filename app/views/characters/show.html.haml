@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%h2= @character.name
+
+%p
+  = link_to 'Edit', edit_character_path(@character)
+  \|
+  = link_to 'Back', characters_path
+
+%p
+  %b User:
+  = @character.user
+%p
+  %b Party:
+  = @character.party
+
+
+%h3 Fördjupningar:
+
+- @character.skill_levels.each do |slevel|
+  %h4 #{slevel.skill_tree.name} (FV #{slevel.level})
