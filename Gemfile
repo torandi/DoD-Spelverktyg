@@ -14,6 +14,9 @@ gem 'simple-navigation'
 gem 'simple_form'
 gem 'cancan'
 gem "nifty-generators", :group => :development
+gem 'nokogiri'
+gem 'mechanize'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

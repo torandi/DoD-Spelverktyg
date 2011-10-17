@@ -1,28 +1,20 @@
 %h1 Listing skills
 
-%table
-  %tr
-    %th Name
-    %th Description
-    %th Skill tree
-    %th Level
-    %th Attribute
-    %th Formula
-    %th
-    %th
-    %th
-
-  - @skills.each do |skill|
-    %tr
-      %td= skill.name
-      %td= skill.description
-      %td= skill.skill_tree_id
-      %td= skill.level
-      %td= skill.attribute
-      %td= skill.formula
-      %td= link_to 'Show', skill
-      %td= link_to 'Edit', edit_skill_path(skill)
-      %td= link_to 'Destroy', skill, :confirm => 'Are you sure?', :method => :delete
+#tree_list
+  %ul
+    - @skill_trees.each do |tree|
+      %li
+        %h3= tree.name
+        %ul
+          - (1..5).each do |level|
+            %li
+              %h4 Nivå #{level}
+              %ul
+                - tree.skills.level(level).each do |skill|
+                  %li
+                    = link_to skill.name, skill
+                    |
+                    = link_to 'Redigera', edit_skill_path(skill)
 
 %br
 

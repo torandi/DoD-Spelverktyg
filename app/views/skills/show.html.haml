@@ -1,22 +1,21 @@
-%p#notice= notice
-
+%h3 #{@skill.level}: #{@skill.name}
+%p.small Tillhör trädet #{@skill.skill_tree.name}
+%p.small
+  = link_to "Redigera", edit_skill_path(@skill)
+  = link_to "Ta bort", @skill, :confirm=>"Är du säker på att du vill ta bort färdigheten?", :method=>:delete
 %p
-  %b Name:
-  = @skill.name
+  %strong Förkunskapskrav:
+  - if @skill.dependency
+    = link_to @skill.dependency, @skill.dependency
+  - else
+    -
 %p
-  %b Description:
   = @skill.description
 %p
-  %b Skill tree:
-  = @skill.skill_tree_id
-%p
-  %b Level:
-  = @skill.level
-%p
-  %b Attribute:
+  %b Attribut:
   = @skill.attribute
 %p
-  %b Formula:
+  %b Formel:
   = @skill.formula
 
 = link_to 'Edit', edit_skill_path(@skill)

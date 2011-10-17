@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017163642) do
+ActiveRecord::Schema.define(:version => 20111017182730) do
 
   create_table "attributes", :force => true do |t|
     t.string   "name"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20111017163642) do
 
   create_table "skills", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.integer  "skill_tree_id"
     t.integer  "level"
     t.string   "attr"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20111017163642) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "class_limited", :default => false, :null => false
+    t.integer  "dependency_id"
   end
 
   create_table "spell_trees", :force => true do |t|
