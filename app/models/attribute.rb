@@ -9,17 +9,33 @@ class Attribute < ActiveRecord::Base
   # Base är om man ska utgå från annat värde än den beräknade basen (anget i attributet)
   # Calc path fylls i med vägen som togs för uträkningen (reference)
   def value(character,calc_path = [], limitation=nil, base=nil)
+    val = calc_value(character, calc_path, limitation, base)
     if output_type == 0
-      calc_value(limitation,calc_value, limitation, base)
+      val
     else
       #Type 1, tarning
       #TODO
-      calc_value(limitation,calc_value, limitation, base)
+      val
     end 
   end
 
-  def calc_value(character,calc_path = [], limitation=nil, base=nil)
-    #TODO
+  def calc_value(character,calc_path = [], limitation=nil, base=nil)  
+    calc_path.clear
+    unless base
+      base = base_value(character)
+    end
+    calc_path << ["Basvärde", "", base]
+
+    value = base
+
+    character.skills.attr(self.id).each do |skill|
+      unless skill.skill.specialized? && limitation != skill.specialization_id
+        value = skill.skill.calc(value)
+        calc_path << [skill.to_s, skill.skill.formula, value]
+      end
+    end
+
+    value
   end
 
   def to_s

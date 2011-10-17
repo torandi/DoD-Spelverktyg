@@ -9,4 +9,13 @@ class Skill < ActiveRecord::Base
   def to_s
     name
   end
+
+  def specialized?
+    class_limited
+  end
+
+  def calc(x)
+    f = formula.gsub(/x/,"#{x}")
+    lambda { |f| $SAFE=4;  return eval(f).to_int }.call(formula)
+  end
 end
