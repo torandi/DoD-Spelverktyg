@@ -4,18 +4,15 @@ class Attribute < ActiveRecord::Base
   has_many :skills, :foreign_key=>"attr"
   before_create :set_text_id
 
-
   # Limitation är aktiv vitnertavla, vapen eller dyl
   # Base är om man ska utgå från annat värde än den beräknade basen (anget i attributet)
   # Calc path fylls i med vägen som togs för uträkningen (reference)
   def value(character,calc_path = [], limitation=nil, base=nil)
     val = calc_value(character, calc_path, limitation, base)
-    if output_type == 0
+    if output_type == :normal
       val
-    else
-      #Type 1, tarning
-      #TODO
-      val
+    elsif output_type == :dice
+      Dododr::Common.dice(val)
     end 
   end
 

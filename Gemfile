@@ -16,6 +16,7 @@ gem 'cancan'
 gem "nifty-generators", :group => :development
 gem 'nokogiri'
 gem 'mechanize'
+gem 'enum_column3'
 
 
 # Use unicorn as the web server

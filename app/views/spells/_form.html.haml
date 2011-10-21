@@ -1,0 +1,40 @@
+= form_for @spell do |f|
+  -if @spell.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@spell.errors.count, "error")} prohibited this spell from being saved:"
+      %ul
+        - @spell.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :spell_tree_id
+    = f.text_field :spell_tree_id
+  .field
+    = f.label :level
+    = f.text_field :level
+  .field
+    = f.label :spelltype
+    = f.text_field :spelltype
+  .field
+    = f.label :duration
+    = f.text_field :duration
+  .field
+    = f.label :duration_unit
+    = f.text_field :duration_unit
+  .field
+    = f.label :range
+    = f.text_field :range
+  .field
+    = f.label :weave_time
+    = f.text_field :weave_time
+  .field
+    = f.label :initative
+    = f.text_field :initative
+  .actions
+    = f.submit 'Save'

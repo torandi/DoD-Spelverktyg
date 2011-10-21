@@ -1,0 +1,37 @@
+%h1 Listing spells
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Spell tree
+    %th Level
+    %th Spelltype
+    %th Duration
+    %th Duration unit
+    %th Range
+    %th Weave time
+    %th Initative
+    %th
+    %th
+    %th
+
+  - @spells.each do |spell|
+    %tr
+      %td= spell.name
+      %td= spell.description
+      %td= spell.spell_tree_id
+      %td= spell.level
+      %td= spell.spelltype
+      %td= spell.duration
+      %td= spell.duration_unit
+      %td= spell.range
+      %td= spell.weave_time
+      %td= spell.initative
+      %td= link_to 'Show', spell
+      %td= link_to 'Edit', edit_spell_path(spell)
+      %td= link_to 'Destroy', spell, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Spell', new_spell_path

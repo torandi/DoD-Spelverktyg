@@ -10,8 +10,9 @@
   %b Basvärde (formell):
   = @attribute.base_formula
 
--if @attribute.output_type == 1
-  %p Visas som tärning
+%p 
+  %b Typ:
+  = @attribute.output_type
 
 %p
   -if @attribute.show_for_gl?

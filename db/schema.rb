@@ -10,16 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111021132222) do
+ActiveRecord::Schema.define(:version => 20111021151217) do
 
   create_table "attributes", :force => true do |t|
     t.string   "name"
-    t.string   "text_id",                        :null => false
-    t.string   "base_formula",                   :null => false
-    t.integer  "output_type",  :default => 0,    :null => false
+    t.string   "text_id",                                                       :null => false
+    t.string   "base_formula",                                                  :null => false
+    t.enum     "output_type",  :limit => [:normal, :dice], :default => :normal, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "show_for_gl",  :default => true
+    t.boolean  "show_for_gl",                              :default => true
   end
 
   add_index "attributes", ["text_id"], :name => "index_attributes_on_text_id", :unique => true
@@ -83,6 +83,9 @@ ActiveRecord::Schema.define(:version => 20111021132222) do
     t.string   "mork_effect"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.text     "negations"
+    t.text     "vitner"
   end
 
   create_table "user_sessions", :force => true do |t|

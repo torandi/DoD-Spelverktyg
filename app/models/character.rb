@@ -38,6 +38,10 @@ class Character < ActiveRecord::Base
     skills.find_by_skill_id(skill.id)
   end
 
+  def attr_value(attribute,calc_path = [], limitation=nil, base=nil) 
+    Attribute.find_by_text_id(attribute).value(self,calc_path, limitation, base)
+  end
+
   private
   def create_skills
     SkillTree.all.each do |tree|

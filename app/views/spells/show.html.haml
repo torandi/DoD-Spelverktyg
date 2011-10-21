@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @spell.name
+%p
+  %b Description:
+  = @spell.description
+%p
+  %b Spell tree:
+  = @spell.spell_tree_id
+%p
+  %b Level:
+  = @spell.level
+%p
+  %b Spelltype:
+  = @spell.spelltype
+%p
+  %b Duration:
+  = @spell.duration
+%p
+  %b Duration unit:
+  = @spell.duration_unit
+%p
+  %b Range:
+  = @spell.range
+%p
+  %b Weave time:
+  = @spell.weave_time
+%p
+  %b Initative:
+  = @spell.initative
+
+= link_to 'Edit', edit_spell_path(@spell)
+\|
+= link_to 'Back', spells_path

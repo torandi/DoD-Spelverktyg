@@ -25,7 +25,8 @@
   .field
     = f.input :base_formula, :label=>"Basformel:",:hint=>" ({textid} hämtar FV för trädet 'textid'"
   .field
-    = f.input :output_type, :label=>"Texttyp", :hint=>" 0 för normal, 1 för tärning"
+    =f.enum_select :output_type
+    -#= f.input :output_type, :label=>"Typ", :as=>:enum_select
   .actions
     = f.submit 'Save'
 
