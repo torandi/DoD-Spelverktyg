@@ -1,3 +1,13 @@
+%table.info_table
+  %tr
+    %th FV
+    %th textid
+  - SkillTree.all.each do |tree|
+    %tr
+      %td= tree.name
+      %td= tree.textid
+
+
 = simple_form_for @attribute do |f|
   -if @attribute.errors.any?
     #error_explanation
@@ -7,15 +17,16 @@
           %li= msg
 
   .field
-    = f.label :name
-    = f.text_field :name
+    = f.input :name, :label=>"Namn"
   .field
-    = f.label :text_id
-    = f.text_field :text_id
+    = f.input :text_id, :label=>"Text-id"
   .field
-    = f.label :base_formula
-    = f.text_field :base_formula
+    = f.input :show_for_gl, :label=>"Visa i spelledarens lista"
   .field
-    = f.input :output_type
+    = f.input :base_formula, :label=>"Basformel:",:hint=>" ({textid} hämtar FV för trädet 'textid'"
+  .field
+    = f.input :output_type, :label=>"Texttyp", :hint=>" 0 för normal, 1 för tärning"
   .actions
     = f.submit 'Save'
+
+

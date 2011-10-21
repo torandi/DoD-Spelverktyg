@@ -10,15 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017214001) do
+ActiveRecord::Schema.define(:version => 20111021132222) do
 
   create_table "attributes", :force => true do |t|
     t.string   "name"
-    t.string   "text_id",                     :null => false
-    t.string   "base_formula",                :null => false
-    t.integer  "output_type",  :default => 0, :null => false
+    t.string   "text_id",                        :null => false
+    t.string   "base_formula",                   :null => false
+    t.integer  "output_type",  :default => 0,    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "show_for_gl",  :default => true
   end
 
   add_index "attributes", ["text_id"], :name => "index_attributes_on_text_id", :unique => true
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20111017214001) do
     t.string   "skill_model"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "textid"
   end
 
   create_table "skills", :force => true do |t|

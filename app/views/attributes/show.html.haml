@@ -1,17 +1,23 @@
 %p#notice= notice
 
 %p
-  %b Name:
+  %b Namn:
   = @attribute.name
 %p
-  %b Text:
+  %b Textid:
   = @attribute.text_id
 %p
-  %b Base formula:
+  %b Basvärde (formell):
   = @attribute.base_formula
+
+-if @attribute.output_type == 1
+  %p Visas som tärning
+
 %p
-  %b Type:
-  = @attribute.type
+  -if @attribute.show_for_gl?
+    Visas i spelledarmenyn
+  - else
+    Visas inte i spelledarmenyn
 
 = link_to 'Edit', edit_attribute_path(@attribute)
 \|

@@ -86,7 +86,7 @@ blockquote {
 .content {
   color: #222;
   font-family: 'Crimson Text', Georgia, serif;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.5;
   min-height: 550px;
   
@@ -222,4 +222,19 @@ div.title, #page {
 
 .small {
   font-size: 10pt;
+}
+
+.info_table {
+  float: right;
+  width: 300px;
+  font-size: 0.9em;
+  border-spacing: 0px;
+  td {
+    border-top: 1px solid black;
+    margin: 0px;
+  }
+
+  td:first-child, th:first-child {
+    border-right: 1px solid black;
+  }
 }

@@ -9,6 +9,18 @@ class Character < ActiveRecord::Base
 
   accepts_nested_attributes_for :skill_levels
 
+  scope :accessible_by, lambda { |user| 
+    if user.admin?
+      all
+    else
+      find_by_user(user)
+    end
+  }
+
+  def skill_level_from_text_id(text_id)
+    skill_level(SkillTree.find_by_textid(text_id).id)
+  end 
+
   def skill_level(skill_tree_id)
     csl = skill_levels.find_by_skill_tree_id(skill_tree_id)
     if csl

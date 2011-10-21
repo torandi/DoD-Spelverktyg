@@ -44,7 +44,7 @@ class Attribute < ActiveRecord::Base
 
   def base_value(character)
     formula = base_formula.gsub(/\{(.+?)\}/) do |m|
-      character.skill_level($1)
+      character.skill_level_from_text_id($1)
     end
     lambda { |f| $SAFE=4;  return eval(f).to_int }.call(formula)
   end
