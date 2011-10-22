@@ -16,30 +16,28 @@
     = csrf_meta_tag
   %body
     #main
-      #top
-        #menu
-          = render_navigation
+      #menu
+        = render_navigation
       #page
-        .body
-          .content
-            #user_nav
-              - if current_user
-                = link_to "Profil", user_path(current_user)
-                |
-                = link_to "Logga ut", logout_path
-              - else
-                = link_to "Logga in", login_path
-
-            - if flash[:notice]
-              %div.notice
-                = flash[:notice]
-            - if flash[:error]
-              %div.error
-                = flash[:error]
-            - if content_for?(:main_content)
-              = yield(:main_content)
+        .content
+          #user_nav
+            - if current_user
+              = link_to "Profil", user_path(current_user)
+              |
+              = link_to "Logga ut", logout_path
             - else
-              = yield
+              = link_to "Logga in", login_path
+
+          - if flash[:notice]
+            %div.notice
+              = flash[:notice]
+          - if flash[:error]
+            %div.error
+              = flash[:error]
+          - if content_for?(:main_content)
+            = yield(:main_content)
+          - else
+            = yield
         .clear
         .footer
           Sidan skapad av Andreas Tarandi

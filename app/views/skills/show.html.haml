@@ -1,4 +1,4 @@
-%h3 #{@skill.level}: #{@skill.name}
+%h3= @skill.to_s
 %p.small Tillhör trädet #{@skill.skill_tree.name}
 %p.small
   = link_to "Redigera", edit_skill_path(@skill)

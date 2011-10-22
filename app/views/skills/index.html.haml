@@ -6,12 +6,12 @@
       %li
         %h3
           =link_to tree.name, '#', :class=>"toggler"
-        %ul{:style=>"display: none;"}
+        %ul{:style=>(@tree == tree.id)?"":"display: none;"}
           - (1..5).each do |level|
             %li
               %h4
                 =link_to "Nivå #{level}", '#', :class=>"toggler"
-              %ul{:style=>"display: none;"}
+              %ul{:style=>(@tree == tree.id && @level == level)?"":"display: none;"}
                 - tree.skills.level(level).each do |skill|
                   %li
                     = link_to skill.name, skill

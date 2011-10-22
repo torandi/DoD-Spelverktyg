@@ -7,7 +7,7 @@ class Skill < ActiveRecord::Base
   scope :skill_tree , lambda { |tree| where("skill_tree_id = ?", tree) }
 
   def to_s
-    name
+    "#{level}: #{name}"
   end
 
   def specialized?

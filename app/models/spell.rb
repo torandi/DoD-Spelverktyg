@@ -21,4 +21,7 @@ class Spell < ActiveRecord::Base
     end
   end
 
+  def to_s
+    "#{level}: #{name}"
+  end
 end
