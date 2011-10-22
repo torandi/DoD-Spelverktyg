@@ -1,6 +1,10 @@
 # -*- encoding: utf-8 -*-
 module ApplicationHelper
   def output_value(output_type, value) 
+    if value.nil?
+      return "-"
+    end
+
     case output_type
       when :normal
         value
@@ -31,6 +35,11 @@ module ApplicationHelper
         end
       when :time
         minutes = value
+        hours = 0
+        days = 0
+        weeks = 0
+        months = 0
+        years = 0
         if minutes >= 60
           hours = minutes/60
           minutes = minutes - hours*60
@@ -56,10 +65,11 @@ module ApplicationHelper
         #output time!
         min = "#{minutes} minuter" if minutes > 0
         hrs = "#{hours} timmar" if hours> 0
+        d = "#{days} dygn" if days> 0
         w = "#{weeks} veckor" if weeks > 0
         m = "#{months} månader" if months> 0
         y = "#{years} år" if years > 0
-        res = "#{y}#{m}#{w}#{hrs}#{min}"
+        res = "#{y}#{m}#{w}#{d}#{hrs}#{min}"
     end
   end
 

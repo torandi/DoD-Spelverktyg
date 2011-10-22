@@ -23,7 +23,7 @@ SimpleNavigation::Configuration.run do |navigation|
       SpellTree.all.each do |tree|
         sub_nav.item tree.textid, tree.name, spell_tree_path(tree) do |subsub|
           tree.spells.all(:order=>:level).each do |spell|
-            subsub.item spell.name.downcase, spell.to_s, spell_path(spell)
+            subsub.item spell.name.downcase, spell.to_s, spell_path(spell), :highlights_on=>/\/spells\/#{spell.id}(\/.*)?/
           end
         end
       end 
