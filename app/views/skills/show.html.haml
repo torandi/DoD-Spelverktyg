@@ -26,6 +26,7 @@
 = simple_form_for CharacterSkill.new do |f|
   = f.association :character, :include_blank=>false, :label=>"Karaktär" , :collection=> Character.accessible_by(current_user)
   = f.input :skill_id, :as=>:hidden, :input_html=>{:value=>@skill.id}
-  -#TODO: Fixa specifikationer
+  - if @skill.specialized?
+    = f.input :specialization_id, :collection=>@skill.skill_tree.class_model.all, :include_blank=>false, :label=>@skill.skill_tree.class_model.model_name
   = f.submit "Lägg till"
 

@@ -1,7 +1,7 @@
 %tr.input
   %td= f.input :cost, :label=>false, :input_html=>{:class=>:number}
   %td= f.input :description, :label=>false, :as=>:text, :input_html=>{:rows=>2, :cols=>40}
-  %td= f.input :effect_type, :label=>false,:collection => {"Formal"=>:normal, "Dubblering"=>:double, "Text"=>:text}, :include_blank=>false
-  %td= f.association :spell_effect, :label=>false,:prompt=>"Ingen"
+  %td= f.input :effect_type, :label=>false,:collection => {"Formel"=>:normal, "Dubblering"=>:double, "Text"=>:text}, :include_blank=>false
+  %td= f.association :spell_effect, :label=>false,:prompt=>"Ingen", :collection=>@spell.effects
   %td= f.input :formula, :label=>false
   %td= link_to_remove_field "Radera", f

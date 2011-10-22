@@ -34,8 +34,15 @@ class Character < ActiveRecord::Base
     name
   end
   
-  def has_skill?(skill)
-    skills.find_by_skill_id(skill.id)
+  def has_skill?(skill, specialization=nil)
+    s = skills.find_by_skill_id(skill.id)
+    if s && s.skill.specialized?
+      s.specialization_id == specialization
+    elsif s
+      true
+    else
+      false
+    end
   end
 
   def attr_value(attribute,calc_path = [], limitation=nil, base=nil) 

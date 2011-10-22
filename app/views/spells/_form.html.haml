@@ -8,7 +8,7 @@
 
   .fields
     =f.input :name, :label=>"Namn"
-    =f.input :description, :label=>"Beskrivning"
+    =f.input :description, :label=>"Beskrivning", :input_html=>{:rows=>20, :cols=>70}
     =f.association :spell_tree, :label=>"Vitnertavla", :include_blank=>false
     =f.input :level, :label=>"Nivå"
     =f.input :spelltype, :label=>"Typ", :collection=>{"Ögonblicklig"=>:instant, "Bevarande"=>:sustained, "Bestående"=>:lasting, "Permanent"=>:permantent}, :include_blank=>false
@@ -32,7 +32,7 @@
         %th Extra effektgrader
         %th Typ
         %th Påverkar effekt
-        %th Formell
+        %th Formel
       = f.simple_fields_for :improvments do |fi|
         = render 'improvment_fields', :f=>fi
     =link_to_add_fields "Lägg till effektgrad", f, :improvments

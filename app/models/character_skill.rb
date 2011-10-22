@@ -4,6 +4,7 @@ class CharacterSkill < ActiveRecord::Base
   belongs_to :skill
 
   validates_uniqueness_of :character_id , :scope=>[:skill_id, :specialization_id], :message=>"Karaktären har redan färdigheten"
+  validate :has_specialization
   validate :has_dependencies
   validate :has_level
 
@@ -21,13 +22,22 @@ class CharacterSkill < ActiveRecord::Base
   end
 
   def specialization
-    "spec: #{specialization_id}"
+    if skill.specialized? 
+      skill.skill_tree.class_model.find(specialization_id)
+    else
+      nil
+    end
   end
 
   private
+
+  def has_specialization
+    errors[:base] << "Måste välja inriktning" if specialization_id.nil? && skill.specialized?
+  end
+
   def has_dependencies
     if skill.dependency
-      errors[:base] << "Saknar förkunskapskrav #{skill.dependency}" unless character.has_skill?(skill.dependency)
+      errors[:base] << "Saknar förkunskapskrav #{skill.dependency} "+(skill.specialized? ? "(#{specialization})":"") unless character.has_skill?(skill.dependency,specialization_id)
     end
   end
 
