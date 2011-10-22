@@ -1,16 +1,21 @@
-%p#notice= notice
+%h3= @spell_tree.name
+
+!= @spell_tree.description
+
+%h4 Negationer
+!=@spell_tree.negations
+
+%h4 Vitner
+!=@spell_tree.vitner
 
 %p
-  %b Name:
-  = @spell_tree.name
-%p
-  %b Hvita effect:
+  %b Hvitaliavitner:
   = @spell_tree.hvita_effect
 %p
-  %b Vaagri effect:
+  %b Vaagrivitner:
   = @spell_tree.vaagri_effect
 %p
-  %b Mork effect:
+  %b Morkvitalja:
   = @spell_tree.mork_effect
 
 = link_to 'Edit', edit_spell_tree_path(@spell_tree)
