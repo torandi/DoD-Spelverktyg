@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111021214217) do
+ActiveRecord::Schema.define(:version => 20111022130121) do
 
   create_table "attributes", :force => true do |t|
     t.string   "name"
@@ -90,10 +90,11 @@ ActiveRecord::Schema.define(:version => 20111021214217) do
   create_table "spell_effects", :force => true do |t|
     t.integer  "spell_id"
     t.string   "name"
-    t.enum     "output_type", :limit => [:normal, :turns, :time, :dice, :reach], :default => :normal
+    t.enum     "output_type",  :limit => [:normal, :turns, :time, :dice, :reach], :default => :normal
     t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "attribute_id"
   end
 
   create_table "spell_trees", :force => true do |t|

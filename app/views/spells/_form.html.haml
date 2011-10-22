@@ -1,4 +1,4 @@
-= form_for @spell do |f|
+= simple_form_for @spell do |f|
   -if @spell.errors.any?
     #error_explanation
       %h2= "#{pluralize(@spell.errors.count, "error")} prohibited this spell from being saved:"
@@ -6,35 +6,35 @@
         - @spell.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :spell_tree_id
-    = f.text_field :spell_tree_id
-  .field
-    = f.label :level
-    = f.text_field :level
-  .field
-    = f.label :spelltype
-    = f.text_field :spelltype
-  .field
-    = f.label :duration
-    = f.text_field :duration
-  .field
-    = f.label :duration_unit
-    = f.text_field :duration_unit
-  .field
-    = f.label :range
-    = f.text_field :range
-  .field
-    = f.label :weave_time
-    = f.text_field :weave_time
-  .field
-    = f.label :initative
-    = f.text_field :initative
+  .fields
+    =f.input :name, :label=>"Namn"
+    =f.input :description, :label=>"Beskrivning"
+    =f.association :spell_tree, :label=>"Vitnertavla", :include_blank=>false
+    =f.input :level, :label=>"Nivå"
+    =f.input :spelltype, :label=>"Typ", :collection=>{"Ögonblicklig"=>:instant, "Bevarande"=>:sustained, "Bestående"=>:lasting, "Permanent"=>:permantent}, :include_blank=>false
+  %p
+    %strong Effekter
+    %table
+      %tr
+        %th Namn
+        %th Typ
+        %th Värde
+        %th Påverkas av attribut
+        %th
+      = f.simple_fields_for :effects do |fe|
+        = render 'effect_fields', :f=>fe
+    =link_to_add_fields "Lägg till effekt", f, :effects
+  %p
+    %strong Effektgrader
+    %table
+      %tr
+        %th Kostnad
+        %th Extra effektgrader
+        %th Typ
+        %th Påverkar effekt
+        %th Formell
+      = f.simple_fields_for :improvments do |fi|
+        = render 'improvment_fields', :f=>fi
+    =link_to_add_fields "Lägg till effektgrad", f, :improvments
   .actions
     = f.submit 'Save'

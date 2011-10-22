@@ -1,10 +1,12 @@
 class Spell < ActiveRecord::Base
-  has_many :effects, :class_name => "SpellEffect"
-  has_many :improvments, :class_name => "SpellEffectImprovment"
+  has_many :effects, :class_name => "SpellEffect", :dependent=>:destroy
+  has_many :improvments, :class_name => "SpellEffectImprovment", :dependent=>:destroy
 
   belongs_to :spell_tree
 
   scope :level, lambda {|level| where("level = ?", level)}
+
+  accepts_nested_attributes_for :improvments, :effects, :reject_if => lambda { |a| a[:name].blank? && a[:description].blank? }, :allow_destroy=>true
 
   def cost 
     case level

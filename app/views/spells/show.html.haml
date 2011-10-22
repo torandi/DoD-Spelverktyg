@@ -14,6 +14,7 @@
   %p
     %b #{e.name}:
     = output_value(e.output_type, e.value )
+    = "(Påverkas av attribut #{e.attr.to_s.downcase})" if e.attr
 
 %h3 Effektgrader
 

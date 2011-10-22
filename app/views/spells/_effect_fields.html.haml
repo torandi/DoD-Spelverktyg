@@ -1,0 +1,6 @@
+%tr.input
+  %td= f.input :name, :label=>false
+  %td= f.input :output_type, :label=>false, :collection => {"Siffervärde"=>:normal, "Tärning(ar)"=>:dice, "Spelrundor"=>:turns, "Räckvidd"=>:turns, "Tid"=>:time}
+  %td= f.input :value, :label=>false
+  %td= f.association :attr, :label=>false, :prompt => "Ingen påverkan"
+  %td= link_to_remove_field "Radera", f
