@@ -7,16 +7,7 @@ class Attribute < ActiveRecord::Base
   # Limitation är aktiv vitnertavla, vapen eller dyl
   # Base är om man ska utgå från annat värde än den beräknade basen (anget i attributet)
   # Calc path fylls i med vägen som togs för uträkningen (reference)
-  def value(character,calc_path = [], limitation=nil, base=nil)
-    val = calc_value(character, calc_path, limitation, base)
-    if output_type == :normal
-      val
-    elsif output_type == :dice
-      Dododr::Common.dice(val)
-    end 
-  end
-
-  def calc_value(character,calc_path = [], limitation=nil, base=nil)  
+  def value(character,calc_path = [], limitation=nil, base=nil)  
     calc_path.clear
     unless base
       base = base_value(character)

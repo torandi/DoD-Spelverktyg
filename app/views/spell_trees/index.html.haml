@@ -1,25 +1,24 @@
-%h1 Listing spell_trees
+%h1 Vitnertavlor
 
-%table
-  %tr
-    %th Name
-    %th Hvita effect
-    %th Vaagri effect
-    %th Mork effect
-    %th
-    %th
-    %th
-
-  - @spell_trees.each do |spell_tree|
-    %tr
-      %td= spell_tree.name
-      %td= spell_tree.hvita_effect
-      %td= spell_tree.vaagri_effect
-      %td= spell_tree.mork_effect
-      %td= link_to 'Show', spell_tree
-      %td= link_to 'Edit', edit_spell_tree_path(spell_tree)
-      %td= link_to 'Destroy', spell_tree, :confirm => 'Are you sure?', :method => :delete
+#tree_list
+  %ul
+    - @spell_trees.each do |tree|
+      %li
+        %h3
+          =link_to tree.name, '#', :class=>"toggler"
+        %ul{:style=>"display: none;"}
+          - tree.spells.each do |spell|
+            %li
+              = link_to "#{spell.level}: #{spell.name}", spell
+              |
+              = link_to 'Redigera', edit_spell_path(spell)
 
 %br
 
-= link_to 'New Spell tree', new_spell_tree_path
+= link_to 'Ny vitner', new_spell_path
+
+:javascript
+  $("a.toggler").click(function() {
+    $(this.parentNode.parentNode).children("ul").toggle('fast')
+    return false
+  })

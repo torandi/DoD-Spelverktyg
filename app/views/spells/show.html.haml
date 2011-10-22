@@ -1,36 +1,33 @@
-%p#notice= notice
+%h2 "#{@spell.level}: #{@spell.name}"
 
 %p
-  %b Name:
-  = @spell.name
-%p
-  %b Description:
-  = @spell.description
-%p
-  %b Spell tree:
-  = @spell.spell_tree_id
-%p
-  %b Level:
-  = @spell.level
-%p
-  %b Spelltype:
-  = @spell.spelltype
-%p
-  %b Duration:
-  = @spell.duration
-%p
-  %b Duration unit:
-  = @spell.duration_unit
-%p
-  %b Range:
-  = @spell.range
-%p
-  %b Weave time:
-  = @spell.weave_time
-%p
-  %b Initative:
-  = @spell.initative
+  = link_to 'Redigera', edit_spell_path(@spell)
 
-= link_to 'Edit', edit_spell_path(@spell)
-\|
-= link_to 'Back', spells_path
+%p
+  %b Typ:
+  = spell_type(@spell.spelltype)
+
+!= @spell.description
+
+%p
+- @spell.effects.each do |e|
+  %p
+    %b #{e.name}:
+    = output_value(e.output_type, e.value )
+
+%h3 Effektgrader
+
+%table 
+  %tr
+    %th Kostnad
+    %th Extra effektgrad
+    %th Typ
+    %th Effekt
+    %th Formel
+  - @spell.improvments.each do |i|
+    %tr
+      %td= i.cost
+      %td= i.description
+      %td= i.effect_type
+      %td= i.spell_effect
+      %td= i.formula

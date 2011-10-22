@@ -6,10 +6,6 @@ class CreateSpells < ActiveRecord::Migration
       t.integer :spell_tree_id
       t.integer :level
       t.enum :spelltype, :limit=>[:instant, :lasting, :permanent, :sustained], :default=>:instant, :null=>false
-      t.integer :duration
-      t.string :duration_unit, :default=>""
-      t.integer :range
-      t.integer :weave_time
       t.integer :initative
 
       t.timestamps

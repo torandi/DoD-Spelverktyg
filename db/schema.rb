@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111021151217) do
+ActiveRecord::Schema.define(:version => 20111021214217) do
 
   create_table "attributes", :force => true do |t|
     t.string   "name"
@@ -76,6 +76,26 @@ ActiveRecord::Schema.define(:version => 20111021151217) do
     t.integer  "dependency_id"
   end
 
+  create_table "spell_effect_improvments", :force => true do |t|
+    t.integer  "spell_effect_id"
+    t.integer  "cost"
+    t.string   "description"
+    t.enum     "effect_type",     :limit => [:normal, :double, :text]
+    t.string   "formula"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "spell_id"
+  end
+
+  create_table "spell_effects", :force => true do |t|
+    t.integer  "spell_id"
+    t.string   "name"
+    t.enum     "output_type", :limit => [:normal, :turns, :time, :dice, :reach], :default => :normal
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "spell_trees", :force => true do |t|
     t.string   "name"
     t.string   "hvita_effect"
@@ -86,6 +106,17 @@ ActiveRecord::Schema.define(:version => 20111021151217) do
     t.text     "description"
     t.text     "negations"
     t.text     "vitner"
+    t.string   "textid"
+  end
+
+  create_table "spells", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "spell_tree_id"
+    t.integer  "level"
+    t.enum     "spelltype",     :limit => [:instant, :lasting, :permanent, :sustained], :default => :instant, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_sessions", :force => true do |t|
