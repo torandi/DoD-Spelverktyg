@@ -7,7 +7,7 @@ class CharacterSkillsController < InheritedResources::Base
     create! do |success, failure|
       success.html {
         flash[:notice] = "La till färdigheten #@character_skill till #{@character_skill.character}"
-        redirect_to @character_skill.character
+        redirect_to @character_skill.skill
       }
       failure.html {
         flash[:error] = @character_skill.errors.first[1]
